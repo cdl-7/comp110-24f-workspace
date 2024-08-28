@@ -3,7 +3,7 @@
 __author__ = "730742183"
 
 
-def mimic(message: str):
+def mimic(message: str) -> str:
     """Returns the message given"""
     return message
 

@@ -1,8 +1,7 @@
 """Wordle using while loops"""
 
 __author__ = "730742183"
-# Declares our emojs as variables that we can use in our code
-# The all-caps means it is a "constant" and cannot be changed
+
 WHITE_BOX: str = "\U00002B1C"
 GREEN_BOX: str = "\U0001F7E9"
 YELLOW_BOX: str = "\U0001F7E8"
@@ -11,9 +10,12 @@ YELLOW_BOX: str = "\U0001F7E8"
 def input_guess(word_length: int) -> str:
     """Allows the user to input a word and checks if it is word_length chars long"""
     guess: str = input(f"Enter a {word_length} character word: ")
-    while len(guess) != word_length:
-        guess = input(f"That wasn't {word_length} chars! Try again: ")
-    return guess
+    if len(guess) == word_length:
+        return guess
+    else:
+        while len(guess) != word_length:
+            guess: str = input(f"That wasn't {word_length} chars! Try again: ")
+        return guess
 
 
 def contains_char(word: str, search_for: str) -> bool:
@@ -23,7 +25,8 @@ def contains_char(word: str, search_for: str) -> bool:
     while i < len(word):
         if word[i] == search_for:
             return True
-        i += 1
+        else:
+            i += 1
     return False
 
 
@@ -53,7 +56,7 @@ def main(secret: str) -> None:
         print(emojified(guess=guess, secret_word=secret))
         if guess == secret:
             print(f"You won in {turn_num}/6 turns!")
-            return None
+            exit()
         turn_num += 1
     print("X/6 - Sorry, try again tomorrow!")
 
